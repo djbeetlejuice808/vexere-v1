@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display JSON Data</title>
+    <style>
+        .container {
+            margin: 20px;
+        }
+
+        .item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="data-container"></div>
+    
+    <script>
+        fetch('http://localhost:3000/api/v1/license/ccm')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('data-container');
+
+                    data.ccm.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'item';
+
+                        // Sử dụng đường dẫn đã chỉnh sửa
+                        const imagePath = `${item.imageId.path.replace(/\\/g, '/')}`;
+
+                        div.innerHTML = `
+                <p><strong>ID:</strong> ${item._id}</p>
+                <p><strong>Transport Station ID:</strong> ${item.transport_station_id._id}</p>
+                <p><strong>License ID:</strong> ${item.licenses_id._id}</p>
+                <p><strong>License Name:</strong> ${item.licenses_id.name}</p>
+                <p><strong>License Purpose:</strong> ${item.licenses_id.purpose}</p>
+                <p><strong>Image Preview:</strong> ${item.licenses_id.image_preview}</p>
+                <p><strong>License Created At:</strong> ${new Date(item.licenses_id.create_at).toLocaleString()}</p>
+                <p><strong>Image Filename:</strong> ${item.imageId.filename}</p>
+                <p><strong>Image Path:</strong> </p>
+                <p><strong>Image Created At:</strong> ${new Date(item.imageId.createAt).toLocaleString()}</p>
+                <img src="http://localhost:3000/api/v1/images/${imagePath}" alt="Image Preview" width="500" height="600">
+            `;
+
+                        container.appendChild(div);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+
+
+    </script>
+</body>
+
+</html>

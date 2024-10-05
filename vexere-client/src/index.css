@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import-normalize;
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+.table-striped-rows tr:nth-child(2n) td {
+  background-color: #fbfbfb;
+}
+
+.table-striped-rows thead {
+  background-color: #f1f1f1;
+}
