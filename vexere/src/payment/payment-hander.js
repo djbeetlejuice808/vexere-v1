@@ -2,10 +2,10 @@ const crypto = require('crypto');
 const axios = require('axios');
 
 // Your API URL, CLIENT_ID, and API_KEY
-const API_URL = 'https://api-merchant.payos.vn/v2/payment-requests';
-const CLIENT_ID = '980c6d49-d222-4ce3-a30e-a5828a202ae4';
-const API_KEY = '9a8d4348-f742-4528-8120-bfdb36f6f5fa';
-const CHECKSUM_KEY = 'e55c0dcb04f60d51ecbcd3b165e008b80ab21ec84cbc55c630c7e9d01f19ae96'; // You need to get this from your payment provider
+const API_URL = '';
+const CLIENT_ID = '';
+const API_KEY = '';
+const CHECKSUM_KEY = ''; // You need to get this from your payment provider
 
 function createSignature(data) {
     const sortedKeys = Object.keys(data).sort();
