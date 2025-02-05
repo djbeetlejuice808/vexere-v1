@@ -6,8 +6,6 @@
 
 A full-stack ticket booking platform inspired by Vexere, built with modern web technologies.
 
-![Demo Screenshot](./screenshot.png) <!-- Add actual screenshot path later -->
-
 ## Features ✨
 - **User Interface**
   - Browse/search available bus routes
